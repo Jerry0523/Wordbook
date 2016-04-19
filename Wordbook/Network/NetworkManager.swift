@@ -10,11 +10,6 @@ import UIKit
 
 class NetworkManager {
     
-    let bAppId = "20160413000018680"
-    let bSalt = "1562390194"
-    let bKey = "NUizRIY94ihYqYX70hy1"
-    let bURL = "http://api.fanyi.baidu.com/api/trans/vip/translate"
-    
     class var sharedInstance : NetworkManager {
         struct Static {
             static var onceToken : dispatch_once_t = 0
@@ -37,7 +32,9 @@ class NetworkManager {
                     
                 }
             }
-            completionHandler(jsonObj, error)
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(jsonObj, error)
+            })
         }
         task.resume()
     }
