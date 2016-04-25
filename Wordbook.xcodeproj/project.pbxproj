@@ -7,38 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053808A81CC10CA5008C3364 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053808A71CC10CA5008C3364 /* WordListController.swift */; };
+		053808A81CC10CA5008C3364 /* LisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053808A71CC10CA5008C3364 /* LisViewController.swift */; };
 		053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DC4681CC677670051EB91 /* NetworkAPIConst.swift */; };
+		C4220A8F1CCE573C00100E43 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */; };
 		C44125611CC095E0009D5452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125601CC095E0009D5452 /* AppDelegate.swift */; };
-		C44125631CC095E1009D5452 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125621CC095E1009D5452 /* AddViewController.swift */; };
+		C44125631CC095E1009D5452 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125621CC095E1009D5452 /* RootViewController.swift */; };
 		C441256B1CC095E1009D5452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C441256A1CC095E1009D5452 /* Assets.xcassets */; };
 		C441256E1CC095E1009D5452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C441256C1CC095E1009D5452 /* LaunchScreen.storyboard */; };
-		C441257E1CC09A63009D5452 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441257A1CC09A63009D5452 /* Note+CoreDataProperties.swift */; };
 		C441257F1CC09A63009D5452 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441257B1CC09A63009D5452 /* Note.swift */; };
 		C44125801CC09A63009D5452 /* Wordbook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */; };
 		C44125821CC0A1A2009D5452 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125811CC0A1A2009D5452 /* CoreDataManager.swift */; };
 		C44125851CC0A5DC009D5452 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125841CC0A5DC009D5452 /* NetworkManager.swift */; };
 		C44125871CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125861CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift */; };
-		C441258D1CC0C2B3009D5452 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C441258C1CC0C2B3009D5452 /* AddViewController.xib */; };
+		C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4678E631CC773E300D83BEA /* SearchViewController.swift */; };
+		C4678E661CC773E300D83BEA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4678E641CC773E300D83BEA /* SearchViewController.xib */; };
+		C4678E691CC775FA00D83BEA /* JWUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4678E681CC775FA00D83BEA /* JWUIKit.framework */; };
+		C4678E6B1CC7760100D83BEA /* JWUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4678E681CC775FA00D83BEA /* JWUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C4678E6E1CC77B8000D83BEA /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4678E6D1CC77B8000D83BEA /* AppConst.swift */; };
+		C4998C0B1CC74FB700AD0CB0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */; };
+		C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */; };
+		C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B395731CC91C0300F66494 /* ListTableViewCell.swift */; };
+		C4B395761CC91C0300F66494 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B395741CC91C0300F66494 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C4678E6C1CC7760100D83BEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C4678E6B1CC7760100D83BEA /* JWUIKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		053808A71CC10CA5008C3364 /* WordListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
+		053808A71CC10CA5008C3364 /* LisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LisViewController.swift; sourceTree = "<group>"; };
 		053DC4681CC677670051EB91 /* NetworkAPIConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPIConst.swift; sourceTree = "<group>"; };
+		C4220A8B1CCE565400100E43 /* Wordbook2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wordbook2.xcdatamodel; sourceTree = "<group>"; };
+		C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C441255D1CC095E0009D5452 /* Wordbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44125601CC095E0009D5452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C44125621CC095E1009D5452 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		C44125621CC095E1009D5452 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		C441256A1CC095E1009D5452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C441256D1CC095E1009D5452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C441256F1CC095E1009D5452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C441257A1CC09A63009D5452 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C441257B1CC09A63009D5452 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		C441257D1CC09A63009D5452 /* Wordbook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wordbook.xcdatamodel; sourceTree = "<group>"; };
 		C44125811CC0A1A2009D5452 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C44125841CC0A5DC009D5452 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C44125861CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+BaiduAPI.swift"; sourceTree = "<group>"; };
 		C44125881CC0B89C009D5452 /* Wordbook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wordbook-Bridging-Header.h"; sourceTree = "<group>"; };
-		C441258C1CC0C2B3009D5452 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		C4678E631CC773E300D83BEA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C4678E641CC773E300D83BEA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		C4678E681CC775FA00D83BEA /* JWUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWUIKit.framework; path = Wordbook/libs/JWUIKit.framework; sourceTree = "<group>"; };
+		C4678E6D1CC77B8000D83BEA /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
+		C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+ShanbeiAPI.swift"; sourceTree = "<group>"; };
+		C4B395731CC91C0300F66494 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		C4B395741CC91C0300F66494 /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4678E691CC775FA00D83BEA /* JWUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				C441255F1CC095E0009D5452 /* Wordbook */,
+				C4678E671CC775B600D83BEA /* Frameworks */,
 				C441255E1CC095E0009D5452 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,12 +103,17 @@
 		C441255F1CC095E0009D5452 /* Wordbook */ = {
 			isa = PBXGroup;
 			children = (
+				C4998C091CC74FA700AD0CB0 /* Model */,
 				C44125831CC0A5B8009D5452 /* Network */,
 				C44125791CC09A63009D5452 /* Storage */,
+				C4678E6D1CC77B8000D83BEA /* AppConst.swift */,
 				C44125601CC095E0009D5452 /* AppDelegate.swift */,
-				C44125621CC095E1009D5452 /* AddViewController.swift */,
-				053808A71CC10CA5008C3364 /* WordListController.swift */,
-				C441258C1CC0C2B3009D5452 /* AddViewController.xib */,
+				C44125621CC095E1009D5452 /* RootViewController.swift */,
+				053808A71CC10CA5008C3364 /* LisViewController.swift */,
+				C4678E631CC773E300D83BEA /* SearchViewController.swift */,
+				C4678E641CC773E300D83BEA /* SearchViewController.xib */,
+				C4B395731CC91C0300F66494 /* ListTableViewCell.swift */,
+				C4B395741CC91C0300F66494 /* ListTableViewCell.xib */,
 				C441256A1CC095E1009D5452 /* Assets.xcassets */,
 				C441256C1CC095E1009D5452 /* LaunchScreen.storyboard */,
 				C441256F1CC095E1009D5452 /* Info.plist */,
@@ -89,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C441257B1CC09A63009D5452 /* Note.swift */,
-				C441257A1CC09A63009D5452 /* Note+CoreDataProperties.swift */,
+				C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */,
 				C44125811CC0A1A2009D5452 /* CoreDataManager.swift */,
 				C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */,
 			);
@@ -99,11 +136,28 @@
 		C44125831CC0A5B8009D5452 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				053DC4681CC677670051EB91 /* NetworkAPIConst.swift */,
 				C44125841CC0A5DC009D5452 /* NetworkManager.swift */,
 				C44125861CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift */,
-				053DC4681CC677670051EB91 /* NetworkAPIConst.swift */,
+				C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C4678E671CC775B600D83BEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4678E681CC775FA00D83BEA /* JWUIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4998C091CC74FA700AD0CB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,6 +170,7 @@
 				C44125591CC095E0009D5452 /* Sources */,
 				C441255A1CC095E0009D5452 /* Frameworks */,
 				C441255B1CC095E0009D5452 /* Resources */,
+				C4678E6C1CC7760100D83BEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +193,12 @@
 				TargetAttributes = {
 					C441255C1CC095E0009D5452 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H563K59824;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -164,7 +225,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C441258D1CC0C2B3009D5452 /* AddViewController.xib in Resources */,
+				C4678E661CC773E300D83BEA /* SearchViewController.xib in Resources */,
+				C4B395761CC91C0300F66494 /* ListTableViewCell.xib in Resources */,
 				C441256E1CC095E1009D5452 /* LaunchScreen.storyboard in Resources */,
 				C441256B1CC095E1009D5452 /* Assets.xcassets in Resources */,
 			);
@@ -179,14 +241,19 @@
 			files = (
 				C44125821CC0A1A2009D5452 /* CoreDataManager.swift in Sources */,
 				C44125871CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift in Sources */,
-				C44125631CC095E1009D5452 /* AddViewController.swift in Sources */,
+				C44125631CC095E1009D5452 /* RootViewController.swift in Sources */,
+				C4678E6E1CC77B8000D83BEA /* AppConst.swift in Sources */,
 				C44125611CC095E0009D5452 /* AppDelegate.swift in Sources */,
 				C44125851CC0A5DC009D5452 /* NetworkManager.swift in Sources */,
-				C441257E1CC09A63009D5452 /* Note+CoreDataProperties.swift in Sources */,
-				053808A81CC10CA5008C3364 /* WordListController.swift in Sources */,
+				C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */,
+				053808A81CC10CA5008C3364 /* LisViewController.swift in Sources */,
+				C4998C0B1CC74FB700AD0CB0 /* NoteModel.swift in Sources */,
 				C441257F1CC09A63009D5452 /* Note.swift in Sources */,
 				C44125801CC09A63009D5452 /* Wordbook.xcdatamodeld in Sources */,
+				C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */,
 				053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */,
+				C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */,
+				C4220A8F1CCE573C00100E43 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +359,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Wordbook/libs",
+				);
 				INFOPLIST_FILE = Wordbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -307,6 +378,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Wordbook/libs",
+				);
 				INFOPLIST_FILE = Wordbook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -343,9 +418,10 @@
 		C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C4220A8B1CCE565400100E43 /* Wordbook2.xcdatamodel */,
 				C441257D1CC09A63009D5452 /* Wordbook.xcdatamodel */,
 			);
-			currentVersion = C441257D1CC09A63009D5452 /* Wordbook.xcdatamodel */;
+			currentVersion = C4220A8B1CCE565400100E43 /* Wordbook2.xcdatamodel */;
 			path = Wordbook.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

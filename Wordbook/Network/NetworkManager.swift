@@ -10,10 +10,10 @@ import UIKit
 
 class NetworkManager {
     
-    class var sharedInstance : NetworkManager {
+    class var sharedInstance: NetworkManager {
         struct Static {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : NetworkManager? = nil
+            static var onceToken: dispatch_once_t = 0
+            static var instance: NetworkManager? = nil
         }
         dispatch_once(&Static.onceToken) {
             Static.instance = NetworkManager()
@@ -38,10 +38,24 @@ class NetworkManager {
         }
         task.resume()
     }
+    
+    func httpDownLoad(url: String, completionHandler: (NSData?, NSError?) -> Void) {
+        let session = NSURLSession.sharedSession()
+        let task = session.downloadTaskWithURL(NSURL(string: url)!) { (url: NSURL?, response: NSURLResponse?, error: NSError?) in
+            var data: NSData?
+            if error == nil && url != nil {
+                data = NSData(contentsOfURL: url!)
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(data, error)
+            })
+        }
+        task.resume()
+    }
 }
 
 extension String {
-    var md5String :String {
+    var md5String: String {
         let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
         let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
@@ -59,7 +73,7 @@ extension String {
         return String(format: hash as String)
     }
     
-    var urlEncodeString :String? {
+    var urlEncodeString: String? {
         return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     }
 }

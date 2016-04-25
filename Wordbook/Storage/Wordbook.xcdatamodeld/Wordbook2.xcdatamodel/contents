@@ -6,11 +6,12 @@
         <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="enDefinition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Note" positionX="-1800" positionY="-729" width="128" height="165"/>
+        <element name="Note" positionX="-1800" positionY="-729" width="128" height="180"/>
     </elements>
 </model>

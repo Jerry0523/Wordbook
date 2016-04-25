@@ -14,4 +14,9 @@ struct NetworkAPIConst {
     static let bSalt = "1562390194"
     static let bKey = "NUizRIY94ihYqYX70hy1"
     static let bURL = "http://api.fanyi.baidu.com/api/trans/vip/translate"
+    
+    static let shanbeiURL = "https://api.shanbay.com/bdc/search/"
+    
+    static let bAPIErrorDomain = "error.baiduapi"
+    static let shanbeiErrorDomain = "error.shanbei"
 }

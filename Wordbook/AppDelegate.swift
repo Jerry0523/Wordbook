@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initApprearance()
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
-        let naviController = UINavigationController(rootViewController: AddViewController())
+        let naviController = UINavigationController(rootViewController: RootViewController())
         self.window?.rootViewController = naviController
         
         self.window?.makeKeyAndVisible()
@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        CoreDataManager.sharedInstance.saveContext()
+        CoreDataManager.sharedInstance().saveContext()
     }
     
     func initApprearance() {
-        
+        UINavigationBar.appearance().tintColor = AppConst.themeColor
     }
 }
 
