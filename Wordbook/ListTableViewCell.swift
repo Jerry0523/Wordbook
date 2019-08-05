@@ -15,11 +15,20 @@ class ListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        selectedBackgroundView = UIView()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        if highlighted {
+            selectedBackgroundView?.backgroundColor = UIColor(named: "theme")
+            word.textColor = UIColor.white
+            definition.textColor = UIColor.white
+        } else {
+            selectedBackgroundView?.backgroundColor = UIColor.white
+            word.textColor = UIColor(named: "theme")
+            definition.textColor = UIColor(named: "text.sub")
+        }
     }
     
 }

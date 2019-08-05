@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		053808A81CC10CA5008C3364 /* LisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053808A71CC10CA5008C3364 /* LisViewController.swift */; };
 		053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DC4681CC677670051EB91 /* NetworkAPIConst.swift */; };
-		C4220A8F1CCE573C00100E43 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */; };
+		C41D9A5122F7E53B00A4BADE /* JWRefreshControl in Frameworks */ = {isa = PBXBuildFile; productRef = C41D9A5022F7E53B00A4BADE /* JWRefreshControl */; };
 		C44125611CC095E0009D5452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125601CC095E0009D5452 /* AppDelegate.swift */; };
 		C44125631CC095E1009D5452 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125621CC095E1009D5452 /* RootViewController.swift */; };
 		C441256B1CC095E1009D5452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C441256A1CC095E1009D5452 /* Assets.xcassets */; };
@@ -21,34 +21,17 @@
 		C44125871CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125861CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift */; };
 		C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4678E631CC773E300D83BEA /* SearchViewController.swift */; };
 		C4678E661CC773E300D83BEA /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4678E641CC773E300D83BEA /* SearchViewController.xib */; };
-		C4678E691CC775FA00D83BEA /* JWUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4678E681CC775FA00D83BEA /* JWUIKit.framework */; };
-		C4678E6B1CC7760100D83BEA /* JWUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4678E681CC775FA00D83BEA /* JWUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C4678E6E1CC77B8000D83BEA /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4678E6D1CC77B8000D83BEA /* AppConst.swift */; };
 		C4998C0B1CC74FB700AD0CB0 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */; };
 		C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */; };
 		C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B395731CC91C0300F66494 /* ListTableViewCell.swift */; };
 		C4B395761CC91C0300F66494 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B395741CC91C0300F66494 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C4678E6C1CC7760100D83BEA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C4678E6B1CC7760100D83BEA /* JWUIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		053808A71CC10CA5008C3364 /* LisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LisViewController.swift; sourceTree = "<group>"; };
 		053DC4681CC677670051EB91 /* NetworkAPIConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPIConst.swift; sourceTree = "<group>"; };
+		C41D9A5222F81A6600A4BADE /* Wordbook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wordbook.entitlements; sourceTree = "<group>"; };
 		C4220A8B1CCE565400100E43 /* Wordbook2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wordbook2.xcdatamodel; sourceTree = "<group>"; };
-		C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C441255D1CC095E0009D5452 /* Wordbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44125601CC095E0009D5452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C44125621CC095E1009D5452 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -60,11 +43,8 @@
 		C44125811CC0A1A2009D5452 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C44125841CC0A5DC009D5452 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C44125861CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+BaiduAPI.swift"; sourceTree = "<group>"; };
-		C44125881CC0B89C009D5452 /* Wordbook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wordbook-Bridging-Header.h"; sourceTree = "<group>"; };
 		C4678E631CC773E300D83BEA /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C4678E641CC773E300D83BEA /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
-		C4678E681CC775FA00D83BEA /* JWUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWUIKit.framework; path = Wordbook/libs/JWUIKit.framework; sourceTree = "<group>"; };
-		C4678E6D1CC77B8000D83BEA /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+ShanbeiAPI.swift"; sourceTree = "<group>"; };
 		C4B395731CC91C0300F66494 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -76,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4678E691CC775FA00D83BEA /* JWUIKit.framework in Frameworks */,
+				C41D9A5122F7E53B00A4BADE /* JWRefreshControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,10 +83,10 @@
 		C441255F1CC095E0009D5452 /* Wordbook */ = {
 			isa = PBXGroup;
 			children = (
+				C41D9A5222F81A6600A4BADE /* Wordbook.entitlements */,
 				C4998C091CC74FA700AD0CB0 /* Model */,
 				C44125831CC0A5B8009D5452 /* Network */,
 				C44125791CC09A63009D5452 /* Storage */,
-				C4678E6D1CC77B8000D83BEA /* AppConst.swift */,
 				C44125601CC095E0009D5452 /* AppDelegate.swift */,
 				C44125621CC095E1009D5452 /* RootViewController.swift */,
 				053808A71CC10CA5008C3364 /* LisViewController.swift */,
@@ -117,7 +97,6 @@
 				C441256A1CC095E1009D5452 /* Assets.xcassets */,
 				C441256C1CC095E1009D5452 /* LaunchScreen.storyboard */,
 				C441256F1CC095E1009D5452 /* Info.plist */,
-				C44125881CC0B89C009D5452 /* Wordbook-Bridging-Header.h */,
 			);
 			path = Wordbook;
 			sourceTree = "<group>";
@@ -126,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				C441257B1CC09A63009D5452 /* Note.swift */,
-				C4220A8E1CCE573C00100E43 /* Note+CoreDataProperties.swift */,
 				C44125811CC0A1A2009D5452 /* CoreDataManager.swift */,
 				C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */,
 			);
@@ -147,7 +125,6 @@
 		C4678E671CC775B600D83BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4678E681CC775FA00D83BEA /* JWUIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,13 +147,15 @@
 				C44125591CC095E0009D5452 /* Sources */,
 				C441255A1CC095E0009D5452 /* Frameworks */,
 				C441255B1CC095E0009D5452 /* Resources */,
-				C4678E6C1CC7760100D83BEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Wordbook;
+			packageProductDependencies = (
+				C41D9A5022F7E53B00A4BADE /* JWRefreshControl */,
+			);
 			productName = Wordbook;
 			productReference = C441255D1CC095E0009D5452 /* Wordbook.app */;
 			productType = "com.apple.product-type.application";
@@ -188,12 +167,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jerry Wong";
 				TargetAttributes = {
 					C441255C1CC095E0009D5452 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = H563K59824;
+						DevelopmentTeam = F93845W87F;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 0;
@@ -204,13 +183,16 @@
 			};
 			buildConfigurationList = C44125581CC095E0009D5452 /* Build configuration list for PBXProject "Wordbook" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
 			mainGroup = C44125541CC095E0009D5452;
+			packageReferences = (
+				C41D9A4F22F7E53B00A4BADE /* XCRemoteSwiftPackageReference "JWRefreshControl" */,
+			);
 			productRefGroup = C441255E1CC095E0009D5452 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,7 +224,6 @@
 				C44125821CC0A1A2009D5452 /* CoreDataManager.swift in Sources */,
 				C44125871CC0ADA9009D5452 /* NetworkManager+BaiduAPI.swift in Sources */,
 				C44125631CC095E1009D5452 /* RootViewController.swift in Sources */,
-				C4678E6E1CC77B8000D83BEA /* AppConst.swift in Sources */,
 				C44125611CC095E0009D5452 /* AppDelegate.swift in Sources */,
 				C44125851CC0A5DC009D5452 /* NetworkManager.swift in Sources */,
 				C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */,
@@ -253,7 +234,6 @@
 				C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */,
 				053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */,
 				C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */,
-				C4220A8F1CCE573C00100E43 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,18 +255,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -320,18 +311,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -350,6 +352,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -359,17 +362,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Wordbook/libs",
-				);
+				CODE_SIGN_ENTITLEMENTS = Wordbook/Wordbook.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = F93845W87F;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wordbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.Wordbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wordbook/Wordbook-Bridging-Header.h";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -378,16 +386,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Wordbook/libs",
-				);
+				CODE_SIGN_ENTITLEMENTS = Wordbook/Wordbook.entitlements;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = F93845W87F;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wordbook/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.Wordbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wordbook/Wordbook-Bridging-Header.h";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -413,6 +426,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C41D9A4F22F7E53B00A4BADE /* XCRemoteSwiftPackageReference "JWRefreshControl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jerry0523/JWRefreshControl.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C41D9A5022F7E53B00A4BADE /* JWRefreshControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C41D9A4F22F7E53B00A4BADE /* XCRemoteSwiftPackageReference "JWRefreshControl" */;
+			productName = JWRefreshControl;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */ = {

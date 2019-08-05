@@ -10,32 +10,28 @@ import Foundation
 
 extension NetworkManager {
     
-    func requestShanbeiTranslate(word: String, completionHandler: (NoteModel?, NSError?) -> Void) {
+    func requestShanbeiTranslate(_ word: String, completionHandler: @escaping (NoteModel?, Error?) -> Void) {
         let urlString = NetworkAPIConst.shanbeiURL + "?word=" + word
         let escapedUrlString = urlString.urlEncodeString!
         
-        let request = NSMutableURLRequest(URL: NSURL(string: escapedUrlString)!)
-        request.HTTPMethod = "GET"
+        var request = URLRequest(url: URL(string: escapedUrlString)!)
+        request.httpMethod = "GET"
         
-        self.httpRequest(request) { [weak self] (item: AnyObject?, error :NSError?) in
+        self.httpRequest(request) { [weak self] (item: Any?, error :Error?) in
             var anError = error
             var note :NoteModel?
             
-            if error == nil && item != nil {
-                let itemDict = item as! Dictionary<String, AnyObject>
-                
+            if let itemDict = item as? [String: Any] {
                 let errorCode = itemDict["status_code"] as? String
                 anError = self?.translateShanbeiErrorCode(errorCode)
                 if anError == nil {
-                    let dataDict = itemDict["data"] as? Dictionary<String, AnyObject>
-                    if dataDict != nil && !dataDict!.isEmpty {
+                    if let dataDict = itemDict["data"] as? Dictionary<String, AnyObject>, !dataDict.isEmpty {
                         note = NoteModel()
                         note?.title = word
-                        note?.definition = (dataDict!["definition"] as? String)?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-                        note?.enDefinition = dataDict!["en_definitions"] as? Dictionary<String, [String]>
-                        
-                        note?.pronunciation = dataDict!["pronunciation"] as? String
-                        note?.audioURL = dataDict!["audio"] as? String
+                        note?.definition = (dataDict["definition"] as? String)?.trimmingCharacters(in: .whitespaces)
+                        note?.enDefinition = dataDict["en_definitions"] as? Dictionary<String, [String]>
+                        note?.pronunciation = dataDict["pronunciation"] as? String
+                        note?.audioURL = dataDict["audio"] as? String
                     }
                 }
             }
@@ -48,7 +44,7 @@ extension NetworkManager {
         }
     }
         
-    func translateShanbeiErrorCode(errorCode: String?) -> NSError? {
+    func translateShanbeiErrorCode(_ errorCode: String?) -> Error? {
         var msg: String?
         if errorCode == "400" {
             msg = "Parameter error"

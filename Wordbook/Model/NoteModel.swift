@@ -17,7 +17,7 @@ class NoteModel {
     
     var pronunciation: String?
     var audioURL: String?
-    var audioData: NSData?
+    var audioData: Data?
     
     var enDefinition: Dictionary<String, [String]>?
     
@@ -40,7 +40,7 @@ class NoteModel {
         
         
         for (key,value) in enDefinition! {
-            if result.characters.count > 0 {
+            if result.count > 0 {
                 result += "\n"
             }
             result += "\(key). "
@@ -49,7 +49,7 @@ class NoteModel {
             }
         }
         
-        if result.characters.count == 0 {
+        if result.count == 0 {
             return nil
         }
         
@@ -58,11 +58,13 @@ class NoteModel {
         return mEnDefinitionString
     }
     
-    func checkAndDownloadSoundFile(completionHandler: () -> Void) {
-        if self.audioURL != nil && self.audioData == nil {
-            NetworkManager.sharedInstance.httpDownLoad(self.audioURL!, completionHandler: {[weak self] (data: NSData?, error: NSError?) in
+    func checkAndDownloadSoundFile(completionHandler: @escaping () -> Void) {
+        if self.audioData != nil {
+            completionHandler()
+        } else if self.audioURL != nil && self.audioData == nil {
+            NetworkManager.shared.httpDownLoad(url: self.audioURL!, completionHandler: {[weak self] (data: Data?, error: Error?) in
                 if data != nil {
-                    self?.audioData = data
+                    self?.audioData = data!
                     completionHandler()
                 }
             })

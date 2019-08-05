@@ -8,45 +8,39 @@
 
 import UIKit
 import CoreData
+import JWRefreshControl
 
 class ListViewController: UITableViewController {
 
     let cellIdentifier = "cellIdentifier"
     var notes: [NoteModel]?
     
-    lazy var headerView: JWRefreshHeaderView = {
-        let refreshHeader = JWRefreshHeaderView.headerWithRefreshingBlock {
-            [weak self] in
-            self?.reloadData()
-            (self?.headerView.contentView as! JWRefreshContentViewProtocol).loadedSuccess!()
-            self?.headerView.endRefreshingWithDelay(1.0)
-        }
-        refreshHeader.tintColor = AppConst.themeColor
-        return refreshHeader
-    }()
-    
     func reloadData() {
-        NSLog("refreshing")
-        self.notes = Note.getNotes(nil)
+        print("refreshing")
+        self.notes = NoteEntity.getNotes()
         self.tableView.reloadData()
     }
     
-    func didReceiveDataChangeNotification(notification: NSNotification) {
-        if self.isViewLoaded() && self.view.window == nil {
+    @objc func didReceiveDataChangeNotification(_ notification: NSNotification) {
+        if self.isViewLoaded && self.view.window == nil {
             self.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.addSubview(self.headerView)
-        self.tableView.registerNib(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        self.tableView.estimatedRowHeight = 95
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.tableFooterView = UIView()
-        self.reloadData()
+        tableView.addRefreshHeader { [unowned self] header in
+            self.reloadData()
+            header.success()
+        }
+        tableView.register(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.estimatedRowHeight = 95
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
+        tableView.keyboardDismissMode = .onDrag
+        reloadData()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ListViewController.didReceiveDataChangeNotification(_:)), name: NSManagedObjectContextObjectsDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ListViewController.didReceiveDataChangeNotification(_:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,24 +48,23 @@ class ListViewController: UITableViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.notes == nil {
             return 0
         }
         return self.notes!.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ListTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListTableViewCell
         let note = self.notes![indexPath.row]
         
         cell.word?.text = note.title
@@ -80,32 +73,24 @@ class ListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let note = self.notes![indexPath.row]
         let vc = SearchViewController()
         vc.noteModel = note
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { [weak self] (action, indexPath) -> Void in
-            let noteModel = self?.notes![indexPath.row]
-            Note.deleteNote(noteModel!)
-            self?.notes?.removeAtIndex(indexPath.row)
-            self?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        }
-        deleteAction.backgroundColor = AppConst.themeColor
-        
-        let classifyAction = UITableViewRowAction(style: .Default, title: "Classify") { [weak self] (action, indexPath) -> Void in
-//            let noteModel = self?.notes![indexPath.row]
-//            Note.deleteNote(noteModel!)
-//            self?.notes?.removeAtIndex(indexPath.row)
-//            self?.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        }
-        classifyAction.backgroundColor = UIColor.init(red: 67.0 / 255.0, green: 176.0 / 255.0, blue: 133.0 / 255.0, alpha: 1.0)
-        
-        return [classifyAction, deleteAction]
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [
+            UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
+                let noteModel = self.notes![indexPath.row]
+                NoteEntity.deleteNote(noteModel)
+                self.notes?.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                handler(true)
+            }
+        ])
     }
-
+    
 }

@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 
-
-class Note: NSManagedObject {
+extension NoteEntity {
     
     func toNoteModel() ->NoteModel {
         let noteModel = NoteModel()
@@ -28,20 +27,19 @@ class Note: NSManagedObject {
         return noteModel
     }
     
-    class func getNotes(word: String?) -> [NoteModel]? {
-        let context = CoreDataManager.sharedInstance().managedObjectContext
-        let request = NSFetchRequest()
-        request.entity = NSEntityDescription.entityForName("Note", inManagedObjectContext: context)
-        
+    class func getNotes(_ word: String? = nil) -> [NoteModel]? {
+        let context = CoreDataManager.shared.managedObjectContext
+        let request = NSFetchRequest<NoteEntity>()
+        request.entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
         request.sortDescriptors = [NSSortDescriptor(key: "time", ascending: false)]
         
-        if word?.characters.count > 0 {
+        if (word?.count ?? 0) > 0 {
             request.predicate = NSPredicate(format: "title = %@", word!)
         }
         
-        var objs: [Note]?
+        var objs: [NoteEntity]?
         do {
-            objs = try context.executeFetchRequest(request) as? [Note]
+            objs = try context.fetch(request)
         } catch {
             let nserror = error as NSError
             NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -57,12 +55,12 @@ class Note: NSManagedObject {
         return result
     }
 
-    class func insertNote(aNote: NoteModel) {
-        let context = CoreDataManager.sharedInstance().managedObjectContext
-        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: context) as! Note
+    class func insert(note aNote: NoteModel) {
+        let context = CoreDataManager.shared.managedObjectContext
+        let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as! NoteEntity
         
         note.type = 0
-        note.time = NSDate()
+        note.time = Date()
         
         note.title = aNote.title
         note.definition = aNote.definition
@@ -75,26 +73,26 @@ class Note: NSManagedObject {
         
         note.checkAndDownloadSoundFile()
         
-        CoreDataManager.sharedInstance().saveContext()
+        CoreDataManager.shared.saveContext()
     }
     
-    class func deleteNote(noteModel: NoteModel) {
-        let context = CoreDataManager.sharedInstance().managedObjectContext
+    class func deleteNote(_ noteModel: NoteModel) {
+        let context = CoreDataManager.shared.managedObjectContext
         if noteModel.mObjectId != nil {
-            let note = context.objectWithID(noteModel.mObjectId!)
-            context.deleteObject(note)
-            CoreDataManager.sharedInstance().saveContext()
+            let note = context.object(with: noteModel.mObjectId!)
+            context.delete(note)
+            CoreDataManager.shared.saveContext()
         }
     }
     
     private func checkAndDownloadSoundFile() {
         if self.audioUrl != nil && self.audio == nil {
-            NetworkManager.sharedInstance.httpDownLoad(self.audioUrl!, completionHandler: {[weak self] (data: NSData?, error: NSError?) in
+            NetworkManager.shared.httpDownLoad(url: self.audioUrl!, completionHandler: {[weak self] (data: Data?, error: Error?) in
                 if data != nil {
-                    self?.audio = data
-                    CoreDataManager.sharedInstance().saveContext()
+                    self?.audio = data!
+                    CoreDataManager.shared.saveContext()
                 }
-                })
+            })
         }
     }
 }

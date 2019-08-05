@@ -1,6 +1,0 @@
-framework module JWUIKit {
-  umbrella header "JWUIKit.h"
-
-  export *
-  module * { export * }
-}

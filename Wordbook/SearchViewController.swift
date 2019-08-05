@@ -14,12 +14,14 @@ class SearchViewController: UIViewController {
     var word: String?
     var noteModel: NoteModel? {
         didSet {
-            noteModel?.checkAndDownloadSoundFile({ [weak self] in
-                self?.audioButton.hidden = self?.noteModel?.audioData == nil
-                self?.audioButtonClicked(nil)
-            })
+            noteModel?.checkAndDownloadSoundFile() { [unowned self] in
+                if self.isViewLoaded {
+                    self.audioButton.isHidden = self.noteModel?.audioData == nil
+                }
+                self.audioButtonClicked(sender: nil)
+            }
             
-            if self.isViewLoaded() && noteModel != nil {
+            if self.isViewLoaded && noteModel != nil {
                 self.refreshUIByNote()
             }
         }
@@ -28,7 +30,7 @@ class SearchViewController: UIViewController {
     var player: AVAudioPlayer?
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var loadingView: JWDotLoadingView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -41,32 +43,25 @@ class SearchViewController: UIViewController {
     
     @IBAction func audioButtonClicked(sender: AnyObject?) {
         do {
-            self.player = try AVAudioPlayer(data: (self.noteModel?.audioData)!)
+            self.player = try AVAudioPlayer(data: (self.noteModel?.audioData)! as Data)
             self.player!.play()
-            
         } catch {
             
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if self.noteModel != nil {
             self.refreshUIByNote()
             self.loadingView.stopAnimating()
         } else {
-            self.contentView.hidden = true
+            self.contentView.isHidden = true
             self.loadingView.startAnimating()
-            self.searchWord(self.word!)
+            self.searchWord(word: self.word!)
             
-            let addItem = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
+            let addItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
             self.navigationItem.rightBarButtonItem = addItem
-            
         }
     }
 
@@ -74,27 +69,26 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func didAddToWordBook(sender: AnyObject?) {
+    @objc func didAddToWordBook(_ sender: AnyObject?) {
         if self.noteModel != nil {
-            Note.insertNote(self.noteModel!)
-            self.navigationController?.popViewControllerAnimated(true)
+            NoteEntity.insert(note: self.noteModel!)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
     private func searchWord(word: String) {
         self.loadingView.startAnimating()
-        let notes = Note.getNotes(word)
-        if notes?.count > 0 {
-            self.noteModel = notes![0]
+        if let notes = NoteEntity.getNotes(word), notes.count > 0 {
+            self.noteModel = notes.first!
         } else {
             self.requestWordTranslation(word)
         }
     }
     
-    private func requestWordTranslation(word :String) {
-        NetworkManager.sharedInstance.requestShanbeiTranslate(word) {[weak self] (item :NoteModel?, error :NSError?) in
+    private func requestWordTranslation(_ word :String) {
+        NetworkManager.shared.requestShanbeiTranslate(word) {[weak self] (item :NoteModel?, error :Error?) in
             if error != nil || item == nil {
-                NSLog((error?.localizedDescription)!)
+                print((error?.localizedDescription)!)
             } else {
                 self?.noteModel = item
             }
@@ -102,20 +96,16 @@ class SearchViewController: UIViewController {
     }
     
     private func refreshUIByNote() {
-        if self.noteModel != nil {
-            titleLabel.text = noteModel?.title
-            let pronunciationText: String! = noteModel?.pronunciation == nil ? "" : noteModel?.pronunciation
-            pronunciationLabel.text = "[" + pronunciationText + "]"
-            cnDefinitionsLabel.text = noteModel?.definition
-            enDefinitionsLabel.text = noteModel?.getEnDefinitionString()
-            
-            audioButton.hidden = noteModel?.audioData == nil
-            
-            contentView.hidden = false
-            loadingView.stopAnimating()
-            
-        } else {
-            
+        guard let noteModel = noteModel else {
+            return
         }
+        titleLabel.text = noteModel.title
+        let pronunciationText: String! = noteModel.pronunciation == nil ? "" : noteModel.pronunciation
+        pronunciationLabel.text = "[" + pronunciationText + "]"
+        cnDefinitionsLabel.text = noteModel.definition
+        enDefinitionsLabel.text = noteModel.getEnDefinitionString()
+        audioButton.isHidden = noteModel.audioData == nil
+        contentView.isHidden = false
+        loadingView.stopAnimating()
     }
 }

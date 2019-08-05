@@ -7,48 +7,40 @@
 //
 
 import UIKit
+import CommonCrypto
 
 class NetworkManager {
     
-    class var sharedInstance: NetworkManager {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: NetworkManager? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = NetworkManager()
-        }
-        return Static.instance!
-    }
+    static let shared = { return NetworkManager() }()
     
-    func httpRequest(request: NSURLRequest, completionHandler: (AnyObject?, NSError?) -> Void) {
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            var jsonObj: AnyObject?
+    func httpRequest(_ request: URLRequest, completionHandler: @escaping (Any?, Error?) -> Void) {
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            var jsonObj: Any?
             if data != nil && error == nil {
                 do {
-                    try jsonObj = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
+                    try jsonObj = JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
                 } catch {
                     
                 }
             }
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 completionHandler(jsonObj, error)
-            })
+            }
         }
         task.resume()
     }
     
-    func httpDownLoad(url: String, completionHandler: (NSData?, NSError?) -> Void) {
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(NSURL(string: url)!) { (url: NSURL?, response: NSURLResponse?, error: NSError?) in
-            var data: NSData?
+    func httpDownLoad(url: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+        let session = URLSession.shared
+        let task = session.downloadTask(with: URL(string: url)!) { url, response, error in
+            var data: Data?
             if error == nil && url != nil {
-                data = NSData(contentsOfURL: url!)
+                data = try? Data(contentsOf: url!)
             }
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 completionHandler(data, error)
-            })
+            }
         }
         task.resume()
     }
@@ -56,10 +48,10 @@ class NetworkManager {
 
 extension String {
     var md5String: String {
-        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
-        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let str = cString(using: .utf8)
+        let strLen = CC_LONG(lengthOfBytes(using: .utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
         
         CC_MD5(str!, strLen, result)
         
@@ -68,12 +60,12 @@ extension String {
             hash.appendFormat("%02x", result[i])
         }
         
-        result.dealloc(digestLen)
+        result.deallocate()
         
         return String(format: hash as String)
     }
     
     var urlEncodeString: String? {
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
 }

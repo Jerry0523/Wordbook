@@ -12,11 +12,9 @@ class RootViewController: UIViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.titleView = self.searchBar
-        
-        self.view.addSubview(self.listVC.view)
-        self.addChildViewController(self.listVC)
+        navigationItem.titleView = self.searchBar
+        view.addSubview(self.listVC.view)
+        addChild(self.listVC)
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,24 +22,24 @@ class RootViewController: UIViewController, UISearchBarDelegate{
     }
     
     // MARK: - UISearchBarDelegate
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(false, animated: true)
         return true
 
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let word = searchBar.text!
-        if word.characters.count == 0 {
+        if word.count == 0 {
             return
         }
         searchBar.text = nil
@@ -53,7 +51,6 @@ class RootViewController: UIViewController, UISearchBarDelegate{
     }
     
     // MARK: - Lazy Properties
-    
     lazy var listVC: ListViewController = {
         let vc = ListViewController()
         vc.view.frame = self.view.bounds
@@ -62,7 +59,7 @@ class RootViewController: UIViewController, UISearchBarDelegate{
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.autocapitalizationType = .None
+        searchBar.autocapitalizationType = .none
         searchBar.placeholder = "Enter a word"
         searchBar.delegate = self
         return searchBar

@@ -10,30 +10,27 @@ import Foundation
 
 extension NetworkManager {
     
-    func requestBaiduTranslate(word: String, completionHandler: (NoteModel?, NSError?) -> Void) {
+    func requestBaiduTranslate(word: String, completionHandler: @escaping (NoteModel?, Error?) -> Void) {
         let stringToBeSigned = NetworkAPIConst.bAppId + word + NetworkAPIConst.bSalt + NetworkAPIConst.bKey
         let md5SignedString = stringToBeSigned.md5String
         
         let urlString = NetworkAPIConst.bURL + "?q=" + word + "&from=auto&to=zh&appid=" + NetworkAPIConst.bAppId + "&salt=" + NetworkAPIConst.bSalt + "&sign=" + md5SignedString
         let escapedUrlString = urlString.urlEncodeString!
         
-        let request = NSMutableURLRequest(URL: NSURL(string: escapedUrlString)!)
-        self.httpRequest(request) { [weak self] (item: AnyObject?, error :NSError?) in
+        let request = URLRequest(url: URL(string: escapedUrlString)!)
+        self.httpRequest(request) { [weak self] (item: Any?, error :Error?) in
             var anError = error
             var note :NoteModel?
             
             if error == nil && item != nil {
                 let itemDict = item as! Dictionary<String, AnyObject>
-                
                 let errorCode = itemDict["error_code"] as? String
                 if errorCode != nil {
                     anError = self?.translateBaiduErrorCode(errorCode)
                 } else {
-                    let translationsArray = itemDict["trans_result"] as! Array<Dictionary<String, String>>
-                    if translationsArray.count > 0 {
+                    if let translationsArray = itemDict["trans_result"] as? Array<Dictionary<String, String>>, translationsArray.count > 0 {
                         let translationDict = translationsArray[0]
-                        let translatedValue = translationDict["dst"]
-                        if translatedValue?.characters.count > 0 {
+                        if let translatedValue = translationDict["dst"], translatedValue.count > 0 {
                             note = NoteModel()
                             note!.title = word
                             note!.definition = translatedValue
@@ -50,7 +47,7 @@ extension NetworkManager {
         }
     }
     
-    func translateBaiduErrorCode(errorCode: String?) -> NSError? {
+    func translateBaiduErrorCode(_ errorCode: String?) -> NSError? {
         var msg: String?
         if errorCode == "52001" {
             msg = "Request time out"
