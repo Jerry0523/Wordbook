@@ -8,61 +8,28 @@
 
 import UIKit
 
-class RootViewController: UIViewController, UISearchBarDelegate{
-    
+class RootViewController: UISplitViewController, UISplitViewControllerDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.titleView = self.searchBar
-        view.addSubview(self.listVC.view)
-        addChild(self.listVC)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        delegate = self
+        primaryBackgroundStyle = .sidebar
+        viewControllers = [
+            UINavigationController(rootViewController: ListViewController()),
+            WelcomeViewController()
+        ]
     }
     
-    // MARK: - UISearchBarDelegate
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.setShowsCancelButton(true, animated: true)
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         return true
     }
     
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.setShowsCancelButton(false, animated: true)
-        return true
-
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let word = searchBar.text!
-        if word.count == 0 {
-            return
+    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
+        if isCollapsed || vc.isKind(of: UINavigationController.self) {
+            return false
         }
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        
-        let vc = SearchViewController()
-        vc.word = word
-        self.navigationController?.pushViewController(vc, animated: true)
+        showDetailViewController(UINavigationController(rootViewController: vc), sender: sender)
+        return true
     }
-    
-    // MARK: - Lazy Properties
-    lazy var listVC: ListViewController = {
-        let vc = ListViewController()
-        vc.view.frame = self.view.bounds
-        return vc
-    }()
-    
-    lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.autocapitalizationType = .none
-        searchBar.placeholder = "Enter a word"
-        searchBar.delegate = self
-        return searchBar
-    }()
-}
 
+}

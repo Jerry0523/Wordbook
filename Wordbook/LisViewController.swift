@@ -21,14 +21,18 @@ class ListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    @objc func didReceiveDataChangeNotification(_ notification: NSNotification) {
-        if self.isViewLoaded && self.view.window == nil {
-            self.reloadData()
+    func clearSelectionIfNeeded() {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.titleView = searchBar
+        clearsSelectionOnViewWillAppear = true
+        
         tableView.addRefreshHeader { [unowned self] header in
             self.reloadData()
             header.success()
@@ -40,15 +44,17 @@ class ListViewController: UITableViewController {
         tableView.keyboardDismissMode = .onDrag
         reloadData()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ListViewController.didReceiveDataChangeNotification(_:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: nil) { [weak self] note in
+//            self?.reloadDataIfNeeded()
+//        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(listDidChangeNotification), object: nil, queue: nil) { [weak self] note in
+            self?.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Table view data source
@@ -74,16 +80,15 @@ class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         let note = self.notes![indexPath.row]
         let vc = SearchViewController()
         vc.noteModel = note
-        self.navigationController?.pushViewController(vc, animated: true)
+        splitViewController?.showDetailViewController(vc, sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return UISwipeActionsConfiguration(actions: [
-            UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
+            UIContextualAction(style: .destructive, title: "Delete") { [unowned self] action, view, handler in
                 let noteModel = self.notes![indexPath.row]
                 NoteEntity.deleteNote(noteModel)
                 self.notes?.remove(at: indexPath.row)
@@ -92,5 +97,47 @@ class ListViewController: UITableViewController {
             }
         ])
     }
+    
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.autocapitalizationType = .none
+        searchBar.placeholder = "Enter a word"
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
+}
+
+extension ListViewController : UISearchBarDelegate {
+    
+    // MARK: - UISearchBarDelegate
+        func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+            searchBar.setShowsCancelButton(true, animated: true)
+            return true
+        }
+        
+        func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+            searchBar.setShowsCancelButton(false, animated: true)
+            return true
+
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+        }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            let word = searchBar.text!
+            if word.count == 0 {
+                return
+            }
+            searchBar.text = nil
+            searchBar.resignFirstResponder()
+            
+            let vc = SearchViewController()
+            vc.word = word
+            splitViewController?.showDetailViewController(vc, sender: nil)
+            clearSelectionIfNeeded()
+        }
     
 }

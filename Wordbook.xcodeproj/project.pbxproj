@@ -14,7 +14,7 @@
 		C44125631CC095E1009D5452 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125621CC095E1009D5452 /* RootViewController.swift */; };
 		C441256B1CC095E1009D5452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C441256A1CC095E1009D5452 /* Assets.xcassets */; };
 		C441256E1CC095E1009D5452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C441256C1CC095E1009D5452 /* LaunchScreen.storyboard */; };
-		C441257F1CC09A63009D5452 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441257B1CC09A63009D5452 /* Note.swift */; };
+		C441257F1CC09A63009D5452 /* NoteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441257B1CC09A63009D5452 /* NoteEntity.swift */; };
 		C44125801CC09A63009D5452 /* Wordbook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */; };
 		C44125821CC0A1A2009D5452 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125811CC0A1A2009D5452 /* CoreDataManager.swift */; };
 		C44125851CC0A5DC009D5452 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125841CC0A5DC009D5452 /* NetworkManager.swift */; };
@@ -25,6 +25,8 @@
 		C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */; };
 		C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B395731CC91C0300F66494 /* ListTableViewCell.swift */; };
 		C4B395761CC91C0300F66494 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B395741CC91C0300F66494 /* ListTableViewCell.xib */; };
+		C4E3C38E22F830F600AE1505 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E3C38C22F830F600AE1505 /* WelcomeViewController.swift */; };
+		C4E3C38F22F830F600AE1505 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4E3C38D22F830F600AE1505 /* WelcomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +40,7 @@
 		C441256A1CC095E1009D5452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C441256D1CC095E1009D5452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C441256F1CC095E1009D5452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C441257B1CC09A63009D5452 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		C441257B1CC09A63009D5452 /* NoteEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteEntity.swift; sourceTree = "<group>"; };
 		C441257D1CC09A63009D5452 /* Wordbook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wordbook.xcdatamodel; sourceTree = "<group>"; };
 		C44125811CC0A1A2009D5452 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C44125841CC0A5DC009D5452 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		C4998C0C1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkManager+ShanbeiAPI.swift"; sourceTree = "<group>"; };
 		C4B395731CC91C0300F66494 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		C4B395741CC91C0300F66494 /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		C4E3C38C22F830F600AE1505 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeViewController.swift; path = ../../../../../System/Volumes/Data/Users/jerry/Code/Wordbook/Wordbook/WelcomeViewController.swift; sourceTree = "<group>"; };
+		C4E3C38D22F830F600AE1505 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WelcomeViewController.xib; path = ../../../../../System/Volumes/Data/Users/jerry/Code/Wordbook/Wordbook/WelcomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				C44125601CC095E0009D5452 /* AppDelegate.swift */,
 				C44125621CC095E1009D5452 /* RootViewController.swift */,
 				053808A71CC10CA5008C3364 /* LisViewController.swift */,
+				C4E3C38C22F830F600AE1505 /* WelcomeViewController.swift */,
+				C4E3C38D22F830F600AE1505 /* WelcomeViewController.xib */,
 				C4678E631CC773E300D83BEA /* SearchViewController.swift */,
 				C4678E641CC773E300D83BEA /* SearchViewController.xib */,
 				C4B395731CC91C0300F66494 /* ListTableViewCell.swift */,
@@ -104,7 +110,7 @@
 		C44125791CC09A63009D5452 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				C441257B1CC09A63009D5452 /* Note.swift */,
+				C441257B1CC09A63009D5452 /* NoteEntity.swift */,
 				C44125811CC0A1A2009D5452 /* CoreDataManager.swift */,
 				C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */,
 			);
@@ -207,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E3C38F22F830F600AE1505 /* WelcomeViewController.xib in Resources */,
 				C4678E661CC773E300D83BEA /* SearchViewController.xib in Resources */,
 				C4B395761CC91C0300F66494 /* ListTableViewCell.xib in Resources */,
 				C441256E1CC095E1009D5452 /* LaunchScreen.storyboard in Resources */,
@@ -229,11 +236,12 @@
 				C4998C0D1CC750C500AD0CB0 /* NetworkManager+ShanbeiAPI.swift in Sources */,
 				053808A81CC10CA5008C3364 /* LisViewController.swift in Sources */,
 				C4998C0B1CC74FB700AD0CB0 /* NoteModel.swift in Sources */,
-				C441257F1CC09A63009D5452 /* Note.swift in Sources */,
+				C441257F1CC09A63009D5452 /* NoteEntity.swift in Sources */,
 				C44125801CC09A63009D5452 /* Wordbook.xcdatamodeld in Sources */,
 				C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */,
 				053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */,
 				C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */,
+				C4E3C38E22F830F600AE1505 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

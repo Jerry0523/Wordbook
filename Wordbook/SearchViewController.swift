@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+let listDidChangeNotification = "listDidChangeNotification"
+
 class SearchViewController: UIViewController {
     
     var word: String?
@@ -60,8 +62,8 @@ class SearchViewController: UIViewController {
             self.loadingView.startAnimating()
             self.searchWord(word: self.word!)
             
-            let addItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
-            self.navigationItem.rightBarButtonItem = addItem
+            let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
+            navigationItem.rightBarButtonItem = addItem
         }
     }
 
@@ -69,11 +71,17 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func didAddToWordBook(_ sender: AnyObject?) {
-        if self.noteModel != nil {
-            NoteEntity.insert(note: self.noteModel!)
-            self.navigationController?.popViewController(animated: true)
+    @objc func didAddToWordBook(_ sender: UIBarButtonItem?) {
+        guard let noteModel = noteModel else {
+            return
         }
+        NoteEntity.insert(note: noteModel)
+        if splitViewController?.isCollapsed ?? false {
+            navigationController?.popViewController(animated: true)
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: listDidChangeNotification), object: nil)
     }
     
     private func searchWord(word: String) {

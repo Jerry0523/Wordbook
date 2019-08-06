@@ -71,7 +71,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="background.main"/>
                                     <constraints>
                                         <constraint firstItem="dgC-cN-5Fm" firstAttribute="top" secondItem="Rg7-za-LUH" secondAttribute="bottom" constant="10" id="3iS-go-pIz"/>
                                         <constraint firstItem="q44-bz-LGe" firstAttribute="leading" secondItem="rzA-93-4pv" secondAttribute="leading" constant="20" id="4tZ-D7-5uD"/>
@@ -88,18 +88,23 @@
                                         <constraint firstItem="rn2-pE-YqN" firstAttribute="centerY" secondItem="CD6-Mv-13j" secondAttribute="centerY" id="ydE-rB-IPZ"/>
                                     </constraints>
                                 </view>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4nI-rc-R7J">
+                                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                </activityIndicatorView>
                             </subviews>
-                            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="background.sub"/>
                             <constraints>
                                 <constraint firstItem="rzA-93-4pv" firstAttribute="leading" secondItem="V6n-5A-4I8" secondAttribute="leading" id="1yP-TJ-ecj"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rzA-93-4pv" secondAttribute="bottom" constant="15" id="8SV-2n-6ha"/>
                                 <constraint firstAttribute="trailing" secondItem="rzA-93-4pv" secondAttribute="trailing" id="Qh7-Ej-8ah"/>
                                 <constraint firstItem="rzA-93-4pv" firstAttribute="centerX" secondItem="V6n-5A-4I8" secondAttribute="centerX" id="S6J-bF-wM1"/>
+                                <constraint firstItem="4nI-rc-R7J" firstAttribute="centerY" secondItem="V6n-5A-4I8" secondAttribute="centerY" id="dLa-GD-NNl"/>
+                                <constraint firstItem="4nI-rc-R7J" firstAttribute="centerX" secondItem="V6n-5A-4I8" secondAttribute="centerX" id="e1f-9o-3XI"/>
                                 <constraint firstItem="rzA-93-4pv" firstAttribute="top" secondItem="V6n-5A-4I8" secondAttribute="top" id="sna-Dk-zol"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="background.sub"/>
                     <constraints>
                         <constraint firstItem="V6n-5A-4I8" firstAttribute="leading" secondItem="iV5-bC-Ksp" secondAttribute="leading" id="3C8-Q2-fe4"/>
                         <constraint firstItem="V6n-5A-4I8" firstAttribute="centerY" secondItem="iV5-bC-Ksp" secondAttribute="centerY" id="4Cc-0x-cXT"/>
@@ -109,10 +114,6 @@
                         <constraint firstItem="V6n-5A-4I8" firstAttribute="centerX" secondItem="iV5-bC-Ksp" secondAttribute="centerX" id="U9a-FI-eTh"/>
                     </constraints>
                 </scrollView>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4nI-rc-R7J">
-                    <rect key="frame" x="188" y="429" width="37" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -126,6 +127,12 @@
     </objects>
     <resources>
         <image name="volume" width="20" height="20"/>
+        <namedColor name="background.main">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="background.sub">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="text.main">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

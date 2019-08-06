@@ -1,5 +1,5 @@
 //
-//  Note.swift
+//  NoteEntity.swift
 //  Wordbook
 //
 //  Created by Jerry on 16/4/15.
