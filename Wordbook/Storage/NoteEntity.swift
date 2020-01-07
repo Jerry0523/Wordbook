@@ -11,6 +11,23 @@ import CoreData
 
 extension NoteEntity {
     
+    enum NoteFilter {
+        
+        case word(_ string: String)
+        
+        case category(code: Int16)
+        
+        var predicate: (String, Any) {
+            switch self {
+            case .word(let mWord):
+                return ("title = %@", mWord)
+            case .category(let code):
+                return ("category_code = %@", code)
+            }
+        }
+        
+    }
+    
     func toNoteModel() ->NoteModel {
         let noteModel = NoteModel()
         
@@ -23,20 +40,24 @@ extension NoteEntity {
         noteModel.mEnDefinitionString = self.enDefinition
         noteModel.mObjectId = self.objectID
         noteModel.mTag = self.tag
+        noteModel.categoryCode = self.category_code
         
         return noteModel
     }
     
-    class func getNotes(_ word: String? = nil) -> [NoteModel]? {
+    class func getNotes(_ filters: [NoteFilter]? = nil, offset: Int = 0) -> [NoteModel]? {
         let context = CoreDataManager.shared.managedObjectContext
         let request = NSFetchRequest<NoteEntity>()
         request.entity = NSEntityDescription.entity(forEntityName: "Note", in: context)
         request.sortDescriptors = [NSSortDescriptor(key: "time", ascending: false)]
+        request.fetchLimit = 20
+        request.fetchOffset = offset
         
-        if (word?.count ?? 0) > 0 {
-            request.predicate = NSPredicate(format: "title = %@", word!)
+        if let filters = filters, filters.count > 0 {
+            let fmts = filters.map { $0.predicate.0 }.joined(separator: "&&")
+            let vals = filters.map { $0.predicate.1 }
+            request.predicate = NSPredicate(format: fmts, argumentArray: vals)
         }
-        
         var objs: [NoteEntity]?
         do {
             objs = try context.fetch(request)
@@ -53,6 +74,16 @@ extension NoteEntity {
         }
         
         return result
+    }
+    
+    class func update(note aNote: NoteModel, config: (NoteEntity) -> ()) {
+        guard let objId = aNote.mObjectId else {
+            return
+        }
+        let context = CoreDataManager.shared.managedObjectContext
+        let entity = context.object(with: objId) as! NoteEntity
+        config(entity)
+        CoreDataManager.shared.saveContext()
     }
 
     class func insert(note aNote: NoteModel) {

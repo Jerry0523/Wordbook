@@ -14,6 +14,7 @@ let listDidChangeNotification = "listDidChangeNotification"
 class SearchViewController: UIViewController {
     
     var word: String?
+    
     var noteModel: NoteModel? {
         didSet {
             noteModel?.checkAndDownloadSoundFile() { [unowned self] in
@@ -60,10 +61,11 @@ class SearchViewController: UIViewController {
         } else {
             self.contentView.isHidden = true
             self.loadingView.startAnimating()
-            self.searchWord(word: self.word!)
-            
-            let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
-            navigationItem.rightBarButtonItem = addItem
+            let isWordExists = self.searchWord(word: self.word!)
+            if !isWordExists {
+                let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SearchViewController.didAddToWordBook(_:)))
+                navigationItem.rightBarButtonItem = addItem
+            }
         }
     }
 
@@ -84,12 +86,14 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: listDidChangeNotification), object: nil)
     }
     
-    private func searchWord(word: String) {
+    private func searchWord(word: String) -> Bool {
         self.loadingView.startAnimating()
-        if let notes = NoteEntity.getNotes(word), notes.count > 0 {
+        if let notes = NoteEntity.getNotes([.word(word)]), notes.count > 0 {
             self.noteModel = notes.first!
+            return true
         } else {
             self.requestWordTranslation(word)
+            return false
         }
     }
     

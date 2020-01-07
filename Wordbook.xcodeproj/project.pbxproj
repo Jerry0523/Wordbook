@@ -10,6 +10,8 @@
 		053808A81CC10CA5008C3364 /* LisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053808A71CC10CA5008C3364 /* LisViewController.swift */; };
 		053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DC4681CC677670051EB91 /* NetworkAPIConst.swift */; };
 		C41D9A5122F7E53B00A4BADE /* JWRefreshControl in Frameworks */ = {isa = PBXBuildFile; productRef = C41D9A5022F7E53B00A4BADE /* JWRefreshControl */; };
+		C43520A7230E85F8002544C9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43520A6230E85F8002544C9 /* CategoryModel.swift */; };
+		C43520A9230E8667002544C9 /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43520A8230E8667002544C9 /* CategoryEntity.swift */; };
 		C44125611CC095E0009D5452 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125601CC095E0009D5452 /* AppDelegate.swift */; };
 		C44125631CC095E1009D5452 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44125621CC095E1009D5452 /* RootViewController.swift */; };
 		C441256B1CC095E1009D5452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C441256A1CC095E1009D5452 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		053DC4681CC677670051EB91 /* NetworkAPIConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPIConst.swift; sourceTree = "<group>"; };
 		C41D9A5222F81A6600A4BADE /* Wordbook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wordbook.entitlements; sourceTree = "<group>"; };
 		C4220A8B1CCE565400100E43 /* Wordbook2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wordbook2.xcdatamodel; sourceTree = "<group>"; };
+		C43520A6230E85F8002544C9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		C43520A8230E8667002544C9 /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
 		C441255D1CC095E0009D5452 /* Wordbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44125601CC095E0009D5452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C44125621CC095E1009D5452 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C441257B1CC09A63009D5452 /* NoteEntity.swift */,
+				C43520A8230E8667002544C9 /* CategoryEntity.swift */,
 				C44125811CC0A1A2009D5452 /* CoreDataManager.swift */,
 				C441257C1CC09A63009D5452 /* Wordbook.xcdatamodeld */,
 			);
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C4998C0A1CC74FB700AD0CB0 /* NoteModel.swift */,
+				C43520A6230E85F8002544C9 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,9 +244,11 @@
 				C4998C0B1CC74FB700AD0CB0 /* NoteModel.swift in Sources */,
 				C441257F1CC09A63009D5452 /* NoteEntity.swift in Sources */,
 				C44125801CC09A63009D5452 /* Wordbook.xcdatamodeld in Sources */,
+				C43520A9230E8667002544C9 /* CategoryEntity.swift in Sources */,
 				C4678E651CC773E300D83BEA /* SearchViewController.swift in Sources */,
 				053DC4691CC677670051EB91 /* NetworkAPIConst.swift in Sources */,
 				C4B395751CC91C0300F66494 /* ListTableViewCell.swift in Sources */,
+				C43520A7230E85F8002544C9 /* CategoryModel.swift in Sources */,
 				C4E3C38E22F830F600AE1505 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

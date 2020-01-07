@@ -36,4 +36,9 @@ class ListTableViewCell: UITableViewCell {
         setHighlighted(selected, animated: animated)
     }
     
+    func update(with note: NoteModel) {
+        word?.text = note.title
+        definition?.text = note.definition
+    }
+    
 }

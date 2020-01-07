@@ -27,6 +27,8 @@ class NoteModel {
     
     var mObjectId: NSManagedObjectID?
     
+    var categoryCode: Int16?
+    
     func getEnDefinitionString() -> String? {
         if mEnDefinitionString != nil {
             return mEnDefinitionString
